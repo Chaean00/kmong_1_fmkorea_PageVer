@@ -54,12 +54,14 @@ def run():
     num = 1
     startPage = int(startEntry.get())
     endPage = int(endEntry.get())
+
+    if not os.path.exists(search):
+        if dirName:
+            os.mkdir(dirName + '/' + search)
+        else:
+            os.mkdir(search)
+
     while startPage <= endPage:
-        if not os.path.exists(search):
-            if dirName:
-                os.mkdir(dirName + '/' + search)
-            else:
-                os.mkdir(search)
         page_directory = os.path.join(search, str(startPage))
         if not os.path.exists(page_directory):
             if dirName:
